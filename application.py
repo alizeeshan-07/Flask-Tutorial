@@ -2,20 +2,20 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 ENV = 'dev'
 
 if ENV == 'dev':
-    app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    application.debug = True
+    application.config['SQLALCHEMY_DATABASE_URI'] = ''
 else:
-    app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    application.debug = False
+    application.config['SQLALCHEMY_DATABASE_URI'] = ''
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(application)
 
 
 class Feedback(db.Model):
